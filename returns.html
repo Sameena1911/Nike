@@ -7,7 +7,7 @@
     <title>Nike</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" type="x-icon" href="./images/nike logo.png">
+    <link rel="shortcut icon" type="x-icon" href="./images/credo logo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +27,7 @@
             }
         }
     </script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .row {
             display: flex;
@@ -122,43 +123,61 @@
 </head>
 
 <body class="p-4">
-    <section class="navbar flex justify-between p-5 items-center sticky top-0 bg-white z-10">
-        <div class="logo">
-            <img src="./images/l2.jpg" class="w-20 h-15 ">
+   <section id="navbar" class="navbar flex justify-between p-5 items-center sticky top-0 bg-white z-10">
+    <div class="logo">
+      <img src="./images/logo with name.jpeg" class="w-20 h-15">
+    </div>
+    <div class="features flex gap-8 cursor-pointer font-medium flex-wrap text-xl">
+     <a href="home.html"> <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p></a>
+     <a href="mens.html"> <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p></a>
+     <a href="womens.html"> <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p></a>
+     <a href="kids.html"> <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p></a>
+      
+    </div>
+    <div class="icons flex gap-8 cursor-pointer items-center">
+      <div class="search-bar hidden md:block"
+        style="vertical-align: top;border-radius: 30px; background-color: #F5F5F5; align-items: center; display: flex; flex-direction: row;">
+        <i class="fa-sharp fa-solid fa-magnifying-glass p-2"></i>
+        <input type="search" id="search" placeholder="Search"
+          style="border-radius: 30px; background-color: #F5F5F5; padding: 10px;width: 120px; ">
+      </div>
+      <div class="side-icons flex gap-8 cursor-pointer">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-6 h-6" id="cart">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+          <p id="count" class="bg-red-600 text-white absolute top-10 rounded-full text-center text-xs w-fit px-1 h-fit">
+            0</p>
         </div>
-        <div class="features flex gap-8 cursor-pointer font-medium flex-wrap text-xl">
-            <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p>
-            <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p>
-            <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p>
-            <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p>
-            <p class="sale hidden md:block cursor-pointer" id="sale">Sale</p>
-        </div>
-        <div class="icons flex gap-8 cursor-pointer items-center">
-            <div class="search-bar flex hidden md:block"
-                style="vertical-align: top;border-radius: 30px; background-color: #F5F5F5; align-items: center; display: flex; flex-direction: row;">
-                <i class="fa-sharp fa-solid fa-magnifying-glass p-2"></i>
-                <input type="search" id="search" placeholder="Search"
-                    style="border-radius: 30px; background-color: #F5F5F5; padding: 10px;width: 120px; ">
-            </div>
-            <div class="side-icons flex gap-8 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6" id="cart">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6" id="user">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6 md:hidden" id="menu">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </div>
-        </div>
-    </section>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6" id="user">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-6 h-6 md:hidden" id="menu">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </div>
+
+    </div>
+  </section>
+    <section class="side-nav md:hidden transition-all duration-1000 z-50" id="sidenav"
+    style="width: 50%; border: solid black 1px; height: 100vh; position: fixed; top: 0; background-color: white; right: -50%;">
+    <div class="close m-8 cursor-pointer text-right ">
+      <i class="fa-solid fa-x" id="close"></i>
+
+    </div>
+    <ul class="p-5 cursor-pointer">
+      <li class="new p-5 border-b-2"><a href="home.html"> New & featured</a></li>
+      <li class="mens p-5 border-b-2"><a href="mens.html"> Mens</a></li>
+      <li class="womens p-5 border-b-2"><a href="womens.html"> Womens</a></li>
+      <li class="kids p-5 border-b-2"><a href="kids.html"> Kids </a></li>
+      
+    </ul>
+  </section>
     <section class="returns">
         <img src="./images/return policy.jpg">
         <p class="uppercase font-bold text-4xl text-wrap mt-7">Returns</p>
@@ -173,49 +192,51 @@
         <p class=" font-semibold text-wrap text-xl mt-3">Cancellation:</p>
         <p class="mb-7 mt-3">Check the cancellation policy to determine if your order is eligible for cancellation. User can cancel an order within a specified timeframe after placing the order. Select the specific order you wish to cancel from the list of your orders. User can cancel a order by giving the proper reasons to cancel it.</p>
     </section>
-    <footer class="footer mt-3">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>company</h4>
-                    <ul>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>get help</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                        <li><a href="#">payment options</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>online shop</h4>
-                    <ul>
-                        <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>follow us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
+   <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>company</h4>
+          <ul>
+            <li><a href="about.html">about us</a></li>
+            <li><a href="services.html">our services</a></li>
+            <li><a href="Privacy Policy.html">privacy policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
         </div>
-    </footer>
+        <div class="footer-col">
+          <h4>get help</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">shipping</a></li>
+            <li><a href="returns.html">returns</a></li>
+            
+            <li><a href="payment.html">payment options</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>online shop</h4>
+          <ul>
+            <li><a href="mens.html">mens</a></li>
+            <li><a href="womens.html">womens</a></li>
+            <li><a href="kids.html">kids</a></li>
+            <li><a href="home.html">New & featured</a></li>
+            
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>follow us</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/share/BcDVVDLra9MSeTqN/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
+            
+            <a href="https://www.instagram.com/credo__site?igsh=MWN4bm04ajNxcWxnbQ=="><i class="fab fa-instagram"></i></a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <script src="index.js"></script>
 </body>
 
 </html>
