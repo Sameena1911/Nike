@@ -7,7 +7,7 @@
   <title>Credo site</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="shortcut icon" type="x-icon" href="./images/nike logo.png">
+  <link rel="shortcut icon" type="x-icon" href="./images/credo logo.png">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,11 +27,14 @@
       }
     }
   </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .search-bar input:focus {
       outline: none;
     }
-
+    html{
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Big Shoulders Text', sans-serif;
       font-family: 'Fira Sans', sans-serif;
@@ -46,7 +49,11 @@
       transition: 2ms;
 
     }
-
+    .cart-bar .cart-content{
+      overflow-y: scroll;
+      -webkit-overflow-scrolling:touch;
+      
+    }
     @media screen and (min-width: 700px) {
       .trending__box {
         display: flex;
@@ -70,9 +77,9 @@
       -webkit-overflow-scrolling: touch;
 
     }
-
+    
     .container {
-      max-width: 1170px;
+     max-width: 1170px; 
       margin: auto;
     }
 
@@ -194,14 +201,14 @@
 <body>
   <section id="navbar" class="navbar flex justify-between p-5 items-center sticky top-0 bg-white z-10">
     <div class="logo">
-      <img src="./images/Credo-site.png" class="w-20 h-15">
+      <img src="./images/logo with name.jpeg" class="w-20 h-15">
     </div>
     <div class="features flex gap-8 cursor-pointer font-medium flex-wrap text-xl">
-      <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p>
-      <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p>
-      <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p>
-      <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p>
-      <p class="sale hidden md:block cursor-pointer" id="sale">Sale</p>
+     <a href="home.html"> <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p></a>
+     <a href="mens.html"> <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p></a>
+     <a href="womens.html"> <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p></a>
+     <a href="kids.html"> <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p></a>
+      
     </div>
     <div class="icons flex gap-8 cursor-pointer items-center">
       <div class="search-bar hidden md:block"
@@ -217,7 +224,8 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
           </svg>
-          <p id="count" class="bg-red-600 text-white absolute top-10 rounded-full text-center text-xs w-fit px-1 h-fit">0</p>
+          <p id="count" class="bg-red-600 text-white absolute top-10 rounded-full text-center text-xs w-fit px-1 h-fit">
+            0</p>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6" id="user">
@@ -232,26 +240,71 @@
 
     </div>
   </section>
-  <div id="logoutbtn" class="absolute hidden right-2 p-5 bg-white shadow-xl shadow-black my-5 w-fit" style="top: 10%;">
-    <button class="text-white bg-blue-500 p-2 rounded-md mx-5">Logout</button>
-  </div>
 
-  <section class="side-nav md:hidden transition-all duration-1000 z-30" id="sidenav"
+  <div id="logoutbtn" class="absolute hidden right-2 p-5 z-30 bg-white shadow-xl shadow-black my-5 w-fit"
+    style="top: 10%;">
+    <button class="text-white bg-blue-500 p-2 rounded-md mx-5 ">Logout</button>
+  </div>
+  <section class="cart-bar bg-white z-30 border-2 border-gray-600 transition-all duration-1000 top-32 left-0 fixed rounded w-fit h-screen"
+    id="cartBar" style="left: -100%;">
+    <div class="cart-title flex gap-16 items-center m-4">
+      <div class="justify-end items-end text-end cursor-pointer"> <i class="fa-solid fa-x" id="cartClose"></i></div>
+      <div class="text-center items-center justify-center font-bold text-lg">Your cart</div>
+
+    </div>
+    <div class="cart-content m-2 ">
+<!---
+      <div class="cart-box flex gap-3 justify-around items-center border-b-2">
+        <img src="./images/p3.png" class="cart-img w-20 h-20 rounded">
+        <div class="detail-box m-3 text-sm">
+          <div class="cart-box-title text-rose-700 font-semibold p-2">Dynamic shoes</div>
+          <div class="price-box flex justify-between p-2">
+            <p class="cart-price">Rs.10 </p>
+            <p class="cart-amt text-rose-700">Rs.10 </p>
+          </div>
+          <input type="number" class="cart-quantity w-10 border-2 m-2" value="1">
+        </div>
+        <ion-icon name="trash-outline" class="cart-remove"></ion-icon>
+
+      </div>
+      <div class="cart-box flex gap-3 justify-around items-center border-b-2">
+        <img src="./images/p3.png" class="cart-img w-20 h-20 rounded">
+        <div class="detail-box m-3 text-sm">
+          <div class="cart-box-title text-rose-700 font-semibold p-2">Dynamic shoes</div>
+          <div class="price-box flex justify-between p-2">
+            <p class="cart-price">Rs.10 </p>
+            <p class="cart-amt text-rose-700">Rs.10 </p>
+          </div>
+          <input type="number" class="cart-quantity w-10 border-2 m-2" value="1">
+        </div>
+        <ion-icon name="trash-outline" class="cart-remove"></ion-icon>
+      </div>
+    -->
+    </div>
+    <div class="cart-total  flex justify-between items-center m-2">
+      <div class=total-title">Total:</div>
+      <div class="total-price">MRP:0</div>
+    </div>
+    <div class="text-center m-2"> <button class="checkout border-2 rounded-sm bg-black p-3 text-sm" style="color: white;">Place order</button></div>
+
+  </section>
+
+  <section class="side-nav md:hidden transition-all duration-1000 z-50" id="sidenav"
     style="width: 50%; border: solid black 1px; height: 100vh; position: fixed; top: 0; background-color: white; right: -50%;">
     <div class="close m-8 cursor-pointer text-right ">
       <i class="fa-solid fa-x" id="close"></i>
 
     </div>
     <ul class="p-5 cursor-pointer">
-      <li class="new p-5 border-b-2">New & featured</li>
-      <li class="mens p-5 border-b-2">Mens</li>
-      <li class="womens p-5 border-b-2">Womens</li>
-      <li class="kids p-5 border-b-2">Kids</li>
-      <li class="sale p-5 border-b-2">Sale</li>
+      <li class="new p-5 border-b-2"><a href="home.html"> New & featured</a></li>
+      <li class="mens p-5 border-b-2"><a href="mens.html"> Mens</a></li>
+      <li class="womens p-5 border-b-2"><a href="womens.html"> Womens</a></li>
+      <li class="kids p-5 border-b-2"><a href="kids.html"> Kids </a></li>
+      
     </ul>
   </section>
 
-  <section class="container ">
+  <section class="container">
     <div class="slide">
       <img src="./images/carousel5.jpg" class="mySlides md:h-svh " style="width: 100%;" alt="">
       <img src="./images/carousel2.jpg" alt="" class="mySlides md:h-svh " style="width: 100%; ">
@@ -261,10 +314,10 @@
   </section>
   <section class="header p-5">
     <p class="uppercase text-center font-bold text-4xl text-wrap p-5">This season's fresh fits</p>
-    <p class="text-wrap text-center p-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit autem cumque
-      rerum voluptates delectus quis ut exercitationem alias? Beatae, nam!</p>
+    <p class="text-wrap text-center p-5">Indulge in luxury comfort with our exclusive shoe designs. 
+      From casual chic to sophisticated elegance, our shoes are crafted to elevate your every step</p>
     <div class="btn text-center">
-      <button class="shop bg-black text-white p-3 w-20 rounded-full cursor-pointer">Shop</button>
+     <a href="#shop"> <button class="shop bg-black text-white p-3 w-20 rounded-full cursor-pointer">Shop</button></a>
     </div>
   </section>
   <section class="trending">
@@ -274,14 +327,14 @@
         <img src="./images/trending1.jpg" class="rounded h-3/4">
         <div class="content absolute bottom-2 m-3 ">
           <p class="text-white p-1">New phantom GX</p>
-          <button class="shop bg-white text-black p-1 w-20 rounded-full cursor-pointer">Shop</button>
+         <a href="#shop"> <button class="shop bg-white text-black p-1 w-20 rounded-full cursor-pointer">Shop</button></a>
         </div>
       </div>
       <div class="card2 relative m-10">
         <img src="./images/trending 33.jpg" class="rounded 1/2">
         <div class="content absolute bottom-2 m-3 ">
           <p class="text-white p-1">Retro running shoes</p>
-          <button class="shop bg-white text-black p-1 w-20 rounded-full cursor-pointer">Shop</button>
+        <a href="#shop">  <button class="shop bg-white text-black p-1 w-20 rounded-full cursor-pointer">Shop</button></a>
         </div>
       </div>
     </div>
@@ -293,110 +346,110 @@
     </video>
   </section>
   <section class="header p-5">
-    <p class="uppercase text-center font-bold text-4xl text-wrap">NIKE g.t. cut 3 </p>
-    <p class="text-wrap text-center p-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit autem cumque
-      rerum voluptates delectus quis ut exercitationem alias? Beatae, nam!</p>
+    <p class="uppercase text-center font-bold text-4xl text-wrap">CREDO SITE </p>
+    <p class="text-wrap text-center p-5">Discover our latest collection of shoes, curated with the latest trends and timeless classics. From casual sneakers to elegant heels, we have something for every occasion</p>
     <div class="btn text-center m-5">
-      <button class="shop bg-black text-white p-3 w-24 rounded-full cursor-pointer">Explore</button>
+     <a href="#shop"> <button class="shop bg-black text-white p-3 w-24 rounded-full cursor-pointer">Explore</button></a>
     </div>
   </section>
-  <section class="scroll">
+  <section class="scroll" id="shop">
     <div class="workout text-center m-4">
       <p class="text-2xl">Workout Essentials</p>
 
     </div>
     <div class="containers m-10" id="product-container">
       <div class="box m-5 p-14 h-full">
-        <img src="./images/p1.png" class="rounded w-full h-full ">
+        <img src="./images/p1.png" class="prod-img rounded w-full h-full ">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Nike Metcon</h1>
+          <h1 class="shoe-title font-black">Nike Metcon</h1>
           <i class="fa-solid fa-heart" onclick="Toggle1()" id="btnh1" style="color: grey;"></i>
         </div>
         <p>Women's workout shoes</p>
-        <p class="font-black">MRP: 12,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart1"
+        <p class="shoe-price font-black">MRP: 10</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart1"
           onclick="handlecart1()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/p2.png" class="rounded w-full h-full">
+        <img src="./images/p2.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Nike Airmax</h1>
+          <h1 class="shoe-title font-black">Nike Airmax</h1>
           <i class="fa-solid fa-heart" onclick="Toggle2()" id="btnh2" style="color: grey;"></i>
         </div>
         <p>Women's Jogging shoes</p>
-        <p class="font-black">MRP: 8,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart2"
+        <p class="shoe-price font-black">MRP: 49</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart2"
           onclick="handlecart2()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/p15.png" class="rounded w-full h-full">
+        <img src="./images/p15.png" class="prod-img rounded w-full h-full">
 
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Nike Airforce</h1>
+          <h1 class="shoe-title font-black">Nike Airforce</h1>
           <i class="fa-solid fa-heart" onclick="Toggle3()" id="btnh3" style="color: grey;"></i>
         </div>
         <p>Women's Walking shoes</p>
-        <p class="font-black">MRP: 6,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart3"
+        <p class="shoe-price font-black">MRP: 99</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart3"
           onclick="handlecart3()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/p16.png" class="rounded w-full h-full">
+        <img src="./images/p16.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Nike Dynamo</h1>
+          <h1 class="shoe-title font-black">Nike Dynamo</h1>
           <i class="fa-solid fa-heart" onclick="Toggle4()" id="btnh4" style="color: grey;"></i>
         </div>
         <p>Kids/ Toddlers shoes</p>
-        <p class="font-black">MRP: 14,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart4"
+        <p class="shoe-price font-black">MRP: 499</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart4"
           onclick="handlecart4()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/p11.png" class="rounded w-full h-full">
+        <img src="./images/p11.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Jordan One</h1>
+          <h1 class="shoe-title font-black">Jordan One</h1>
           <i class="fa-solid fa-heart" onclick="Toggle5()" id="btnh5" style="color: grey;"></i>
         </div>
         <p>Men's workout shoes</p>
-        <p class="font-black">MRP: 6,449/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart5"
+        <p class="shoe-price font-black">MRP: 9999</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart5"
           onclick="handlecart5()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/product 3.png" class="rounded w-full h-full">
+        <img src="./images/product 3.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Air Jordan</h1>
+          <h1 class="shoe-title font-black">Air Jordan</h1>
           <i class="fa-solid fa-heart" onclick="Toggle6()" id="btnh6" style="color: grey;"></i>
         </div>
         <p>Men's workout shoes</p>
-        <p class="font-black">MRP: 7,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart6"
+        <p class="shoe-price font-black">MRP: 4999</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart6"
           onclick="handlecart6()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/product 2.png" class="rounded w-full h-full">
+        <img src="./images/product 2.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Nike Dunk</h1>
+          <h1 class="shoe-title font-black">Nike Dunk</h1>
           <i class="fa-solid fa-heart" onclick="Toggle7()" id="btnh7" style="color: grey;"></i>
         </div>
         <p>Men's Sports shoes</p>
-        <p class="font-black">MRP: 4,449/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart7"
+        <p class="shoe-price font-black">MRP: 10000</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart7"
           onclick="handlecart7()">Add to Cart</button>
       </div>
       <div class="box h-full m-5 p-14">
-        <img src="./images/product 1.png" class="rounded w-full h-full">
+        <img src="./images/product 1.png" class="prod-img rounded w-full h-full">
         <div class="favourite flex justify-between items-center">
-          <h1 class="font-black">Jordan Stadium</h1>
+          <h1 class="shoe-title font-black">Jordan Stadium</h1>
           <i class="fa-solid fa-heart" onclick="Toggle8()" id="btnh8" style="color: grey;"></i>
         </div>
         <p>Men's office shoes</p>
-        <p class="font-black">MRP: 7,999/-</p>
-        <button class=" bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart8"
+        <p class="shoe-price font-black">MRP: 25000</p>
+        <button class="add-cart bg-black text-white p-2 m-3 w-40 rounded-full cursor-pointer" id="cart8"
           onclick="handlecart8()">Add to Cart</button>
       </div>
     </div>
   </section>
+
   <footer class="footer">
     <div class="container">
       <div class="row">
@@ -412,35 +465,38 @@
         <div class="footer-col">
           <h4>get help</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">shipping</a></li>
-            <li><a href="#">returns</a></li>
-            <li><a href="#">order status</a></li>
-            <li><a href="#">payment options</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">shipping</a></li>
+            <li><a href="returns.html">returns</a></li>
+            
+            <li><a href="payment.html">payment options</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>online shop</h4>
           <ul>
-            <li><a href="#">watch</a></li>
-            <li><a href="#">bag</a></li>
-            <li><a href="#">shoes</a></li>
-            <li><a href="#">dress</a></li>
+            <li><a href="mens.html">mens</a></li>
+            <li><a href="womens.html">womens</a></li>
+            <li><a href="kids.html">kids</a></li>
+            <li><a href="home.html">New & featured</a></li>
+            
           </ul>
         </div>
         <div class="footer-col">
           <h4>follow us</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/share/BcDVVDLra9MSeTqN/?mibextid=qi2Omg"><i class="fab fa-facebook-f"></i></a>
+            
+            <a href="https://www.instagram.com/credo__site?igsh=MWN4bm04ajNxcWxnbQ=="><i class="fab fa-instagram"></i></a>
+            
           </div>
         </div>
       </div>
     </div>
   </footer>
   <script src="index.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
