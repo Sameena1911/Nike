@@ -27,6 +27,7 @@
             }
         }
     </script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .row {
             display: flex;
@@ -116,31 +117,45 @@
         }
     </style>
 </head>
-<body>
-    <section class="navbar flex justify-between p-5 items-center sticky top-0 bg-white z-10">
+
+<body class="p-3">
+    <section id="navbar" class="navbar flex justify-between p-5 items-center sticky top-0 bg-white z-10">
         <div class="logo">
-            <img src="./images/l2.jpg" class="w-20 h-15 ">
+            <img src="./images/logo with name.jpeg" class="w-20 h-15">
         </div>
         <div class="features flex gap-8 cursor-pointer font-medium flex-wrap text-xl">
-            <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p>
-            <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p>
-            <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p>
-            <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p>
-            <p class="sale hidden md:block cursor-pointer" id="sale">Sale</p>
+            <a href="home.html">
+                <p class=" new hidden md:block cursor-pointer" id="new">New & featured</p>
+            </a>
+            <a href="mens.html">
+                <p class="mens hidden md:block cursor-pointer" id="mens">Mens</p>
+            </a>
+            <a href="womens.html">
+                <p class="womens hidden md:block cursor-pointer" id="womens">Womens</p>
+            </a>
+            <a href="kids.html">
+                <p class="kids hidden md:block cursor-pointer" id="kids">Kids</p>
+            </a>
+
         </div>
         <div class="icons flex gap-8 cursor-pointer items-center">
-            <div class="search-bar flex hidden md:block"
+            <div class="search-bar hidden md:block"
                 style="vertical-align: top;border-radius: 30px; background-color: #F5F5F5; align-items: center; display: flex; flex-direction: row;">
                 <i class="fa-sharp fa-solid fa-magnifying-glass p-2"></i>
                 <input type="search" id="search" placeholder="Search"
                     style="border-radius: 30px; background-color: #F5F5F5; padding: 10px;width: 120px; ">
             </div>
             <div class="side-icons flex gap-8 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6" id="cart">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                </svg>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6" id="cart">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                    <p id="count"
+                        class="bg-red-600 text-white absolute top-10 rounded-full text-center text-xs w-fit px-1 h-fit">
+                        0</p>
+                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6" id="user">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -155,54 +170,95 @@
 
         </div>
     </section>
+    <div id="logoutbtn" class="absolute hidden right-2 p-5 z-30 bg-white shadow-xl shadow-black my-5 w-fit"
+        style="top: 10%;">
+        <button class="text-white bg-blue-500 p-2 rounded-md mx-5 ">Logout</button>
+    </div>
+    <section class="side-nav md:hidden transition-all duration-1000 z-50" id="sidenav"
+        style="width: 50%; border: solid black 1px; height: 100vh; position: fixed; top: 0; background-color: white; right: -50%;">
+        <div class="close m-8 cursor-pointer text-right ">
+            <i class="fa-solid fa-x" id="close"></i>
+
+        </div>
+        <ul class="p-5 cursor-pointer">
+            <li class="new p-5 border-b-2"><a href="home.html"> New & featured</a></li>
+            <li class="mens p-5 border-b-2"><a href="mens.html"> Mens</a></li>
+            <li class="womens p-5 border-b-2"><a href="womens.html"> Womens</a></li>
+            <li class="kids p-5 border-b-2"><a href="kids.html"> Kids </a></li>
+
+        </ul>
+    </section>
     <section class="Privacy Policy m-5">
         <p class="uppercase text-center font-bold text-4xl text-wrap p-2 ">Privacy Policy</p>
-        <img src="/images/privacy.jpg" class="items-center justify-center w-screen h-screen m-2" >
-        <p class="mt-8 font-medium">What personal data we collect and why we collect it</p>
+        <img src="/images/privacy.jpg" class="items-center justify-center m-2 w-full" style="height: 65vh;">
+        <p class="mt-8 font-medium ">What personal data we collect and why we collect it</p>
         <div>
-            <p class="mt-2 font-semibold">Comments</p>
-            <p class="mt-1">When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor's IP address and browser user agent string to help spam detection.</p>
+            <p class="mt-2 font-bold text-xl">Comments</p>
+            <p class="mt-1">When visitors leave comments on the site we collect the data shown in the comments form, and
+                also the visitor's IP address and browser user agent string to help spam detection.</p>
         </div>
         <div>
-            <p class="mt-1 font-semibold">Media</p>
-            <p class="mt-1">If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.
+            <p class="mt-2 font-bold text-xl">Media</p>
+            <p class="mt-1">If you upload images to the website, you should avoid uploading images with embedded
+                location data (EXIF GPS) included. Visitors to the website can download and extract any location data
+                from images on the website.
             </p>
         </div>
         <div>
-            <p class="mt-2 font-semibold">Cookies</p>
-            <p class="mt-1">If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.
+            <p class="mt-2 font-bold text-xl">Cookies</p>
+            <p class="mt-1">If you leave a comment on our site you may opt-in to saving your name, email address and
+                website in cookies. These are for your convenience so that you do not have to fill in your details again
+                when you leave another comment. These cookies will last for one year.If you visit our login page, we
+                will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no
+                personal data and is discarded when you close your browser.
 
-                When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.
-                
-                If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.
-                
+                When you log in, we will also set up several cookies to save your login information and your screen
+                display choices. Login cookies last for two days, and screen options cookies last for a year. If you
+                select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login
+                cookies will be removed.
+
+                If you edit or publish an article, an additional cookie will be saved in your browser. This cookie
+                includes no personal data and simply indicates the post ID of the article you just edited. It expires
+                after 1 day.
+
             </p>
         </div>
         <div>
-            <p class="mt-2 font-semibold">Embedded content from other websites</p>
-            <p class="mt-1">Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.
+            <p class="mt-2 font-bold text-xl">Embedded content from other websites</p>
+            <p class="mt-1">Articles on this site may include embedded content (e.g. videos, images, articles, etc.).
+                Embedded content from other websites behaves in the exact same way as if the visitor has visited the
+                other website.
 
-                These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.
-                </p>
+                These websites may collect data about you, use cookies, embed additional third-party tracking, and
+                monitor your interaction with that embedded content, including tracking your interaction with the
+                embedded content if you have an account and are logged in to that website.
+            </p>
         </div>
         <div>
-            <p class="mt-2 font-semibold">Analytics
+            <p class="mt-2 font-bold text-xl">Analytics
             </p>
             <p class="mt-1">If you request a password reset, your IP address will be included in the reset email.
-</p>
+            </p>
         </div>
         <div>
-            <p class="mt-2 font-semibold">How long we retain your data
+            <p class="mt-2 font-bold text-xl">How long we retain your data
             </p>
-            <p class="mt-1">If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.
+            <p class="mt-1">If you leave a comment, the comment and its metadata are retained indefinitely. This is so
+                we can recognize and approve any follow-up comments automatically instead of holding them in a
+                moderation queue.
 
-                For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.
-                </p>
+                For users that register on our website (if any), we also store the personal information they provide in
+                their user profile. All users can see, edit, or delete their personal information at any time (except
+                they cannot change their username). Website administrators can also see and edit that information.
+            </p>
         </div>
         <div>
-            <p class="mt-2 font-semibold">What rights you have over your data
+            <p class="mt-2 font-bold text-xl">What rights you have over your data
             </p>
-            <p class=mt-1>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.
+            <p class=mt-1>If you have an account on this site, or have left comments, you can request to receive an
+                exported file of the personal data we hold about you, including any data you have provided to us. You
+                can also request that we erase any personal data we hold about you. This does not include any data we
+                are obliged to keep for administrative, legal, or security purposes.
 
             </p>
         </div>
@@ -216,39 +272,45 @@
                         <li><a href="about.html">about us</a></li>
                         <li><a href="services.html">our services</a></li>
                         <li><a href="Privacy Policy.html">privacy policy</a></li>
-                        <li><a href="contact.html">affiliate program</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>get help</h4>
                     <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">shipping</a></li>
-                        <li><a href="#">returns</a></li>
-                        <li><a href="#">order status</a></li>
-                        <li><a href="#">payment options</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">shipping</a></li>
+                        <li><a href="returns.html">returns</a></li>
+
+                        <li><a href="payment.html">payment options</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>online shop</h4>
                     <ul>
-                        <li><a href="#">watch</a></li>
-                        <li><a href="#">bag</a></li>
-                        <li><a href="#">shoes</a></li>
-                        <li><a href="#">dress</a></li>
+                        <li><a href="mens.html">mens</a></li>
+                        <li><a href="womens.html">womens</a></li>
+                        <li><a href="kids.html">kids</a></li>
+                        <li><a href="home.html">New & featured</a></li>
+
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>follow us</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/share/BcDVVDLra9MSeTqN/?mibextid=qi2Omg"><i
+                                class="fab fa-facebook-f"></i></a>
+
+                        <a href="https://www.instagram.com/credo__site?igsh=MWN4bm04ajNxcWxnbQ=="><i
+                                class="fab fa-instagram"></i></a>
+
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="index.js"></script>
 </body>
+
+</html>
 </html>
