@@ -130,35 +130,9 @@ function Toggle8() {
 
 //navbar
 
-var feature = document.getElementById("new");
-feature.addEventListener("click", function () {
-  alert("This section is under process!")
-})
 
-var mens = document.getElementById("mens");
-mens.addEventListener("click", function () {
-  alert("This section is under process!")
-})
 
-var womens = document.getElementById("womens");
-womens.addEventListener("click", function () {
-  alert("This section is under process!")
-})
 
-var kids = document.getElementById("kids");
-kids.addEventListener("click", function () {
-  alert("This section is under process!")
-})
-
-var sale = document.getElementById("sale");
-sale.addEventListener("click", function () {
-  alert("This section is under process!")
-})
-
-var cart = document.getElementById("cart");
-cart.addEventListener("click", function () {
-  alert("This section is under development")
-})
 var logoutbtn = document.getElementById("logoutbtn")
 var user = document.getElementById("user");
 var display = 0;
@@ -288,3 +262,139 @@ function handlecart8() {
   }
 }
 var count = document.getElementById("count")
+
+//cart bar
+
+var cartBar = document.getElementById("cartBar")
+var cart = document.getElementById("cart")
+cart.addEventListener("click", function () {
+  cartBar.style.left = 0
+})
+var cartClose = document.getElementById("cartClose")
+cartClose.addEventListener("click", function () {
+  cartBar.style.left = "-100%"
+})
+
+
+//cart items
+
+document.addEventListener('DOMContentLoaded', loadShoes);
+function loadShoes() {
+  loadContent();
+}
+
+//cart remove items
+
+function loadContent() {
+  //remove items from cart
+  let btnRemove = document.querySelectorAll('.cart-remove');
+  btnRemove.forEach((iconbtn) => {
+    iconbtn.addEventListener('click', removeItem);
+  });
+  //product item chage event
+  let qtyElements = document.querySelectorAll('.cart-quantity');
+  qtyElements.forEach((input) => {
+    input.addEventListener('change', changeQty);
+  });
+
+  //product cart
+  let cartBtns = document.querySelectorAll('.add-cart');
+  cartBtns.forEach((cartbtn) => {
+    cartbtn.addEventListener('click', addCart);
+  });
+
+  updateTotal();
+}
+//remove  item
+function removeItem() {
+  if (confirm('Are you sure to remove?')) {
+    let title=this.parentElement.querySelector('.cart-box-title').innerHTML;
+    itemList=itemList.filter(el=>el.title!=title);
+    this.parentElement.remove();
+    loadContent();
+  }
+}
+
+//changeQty
+function changeQty() {
+  if (this.value < 1) {
+    this.value = 1;
+  }
+  loadContent();
+}
+
+let itemList=[];
+
+//add cart
+function addCart() {
+  let shoe = this.parentElement;
+  let title = shoe.querySelector('.shoe-title').innerText;
+  let price = shoe.querySelector('.shoe-price').innerText;
+  let imgSrc = shoe.querySelector('.prod-img').src;
+
+  let newProduct={title,price,imgSrc};
+
+  //check if product already exist in the cart
+
+  if(itemList.find((el)=>el.title==newProduct.title)){
+    alert("Product already added in cart");
+    return;
+  }
+  else{
+    itemList.push(newProduct)
+  }
+
+  let newProductElement=createCartProduct(title, price, imgSrc);
+  let element=document.createElement('div');
+  element.innerHTML=newProductElement;
+  let cartBasket=document.querySelector('.cart-content');
+  cartBasket.append(element);
+  loadContent();
+}
+
+function createCartProduct(title, price, imgSrc) {
+  return `<div class="cart-box flex gap-3 justify-around items-center border-b-2">
+  <img src="${imgSrc}" class="cart-img w-20 h-20 rounded">
+  <div class="detail-box m-3 text-sm">
+    <div class="cart-box-title text-rose-700 font-semibold p-2">${title}</div>
+    <div class="price-box flex justify-between p-2 gap-3">
+      <p class="cart-price">${price}</p>
+      <p class="cart-amt text-rose-700">${price}</p>
+    </div>
+    <input type="number" class="cart-quantity w-10 border-2 m-2" value="1">
+  </div>
+  <ion-icon name="trash-outline" class="cart-remove"></ion-icon>
+
+</div>`;
+}
+
+function updateTotal(){
+  const cartItems= document.querySelectorAll('.cart-box');
+  const totalValue=document.querySelector(".total-price");
+
+  let total=0;
+
+  cartItems.forEach(product=>{
+    let priceElement=product.querySelector('.cart-price');
+    let price=parseFloat(priceElement.innerHTML.replace("MRP:",""));
+    let qty=product.querySelector('.cart-quantity').value;
+    total+=(price*qty);
+    product.querySelector('.cart-amt').innerText="MRP:"+(price*qty);
+
+  });
+
+  totalValue.innerHTML='MRP:'+total;
+
+  //add prod count in icon
+  const cartCount=document.getElementById("count");
+  let count=itemList.length;
+  cartCount.innerHTML=count;
+
+  if(count==0){
+    cartCount.style.display='none';
+  }
+  else{
+    cartCount.style.display='block';
+  }
+
+}
